@@ -4,8 +4,8 @@
 Transitioning from software engineering to DevOps/Cloud, this homelab is used to build hands-on experience with infrastructure, networking and Kubernetes.
 
 ## Hardware
-- Optiplex 7050 (Proxmox)
-- 2x Wyse 5070 (Ubuntu Server)
+- Optiplex 7050 8gb ram / 4 vcpu (Proxmox)
+- 2x Wyse 5070 4gb ram / 2 vcpu (Ubuntu Server)
 - MacBook Pro (management node)
 
 ## Network Design
