@@ -15,7 +15,7 @@ Transitioning from software engineering to DevOps/Cloud, this homelab is used to
 - Freebox (internet router) used as default gateway
 - Mac can act as NAT fallback via iPhone tethering
 
-## Architecture
+## Architecture (for now)
 
 ```mermaid
 flowchart TD
@@ -34,6 +34,33 @@ flowchart TD
     S --> O
     S --> W1
     S --> W2
+```
+## Architecture (soon)
+
+```mermaid
+flowchart TD
+    I[Internet]
+    F[Freebox<br/>Internet Router / Normal Gateway]
+    P[iPhone 5G<br/>Backup Internet Link]
+
+    M[MacBook Pro<br/>Admin node / NAT fallback<br/>AX88179A<br/>192.168.1.10]
+    S[LAN Switch]
+
+    O[opti1<br/>Proxmox host<br/>vmbr0<br/>192.168.1.11]
+    W1[wyse1<br/>Ubuntu Server<br/>192.168.1.12]
+    W2[wyse2<br/>Ubuntu Server<br/>192.168.1.13]
+
+    I --> F
+    I --> P
+
+    F --> S
+    P -. USB tethering .-> M
+    M -. NAT fallback .-> S
+
+    S --> O
+    S --> W1
+    S --> W2
+    S --> M
 ```
 
 ## Key Learnings
