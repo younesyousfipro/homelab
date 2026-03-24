@@ -1,2 +1,2 @@
 # homelab
-hybrid k3s homelab
+Hybrid Kubernetes (k3s) cluster on VM (Proxmox) and bare metal nodes.
