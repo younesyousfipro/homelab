@@ -1,23 +1,31 @@
 # Homelab — DevOps Learning Platform
 
 ## Context
-Transitioning from software engineering to DevOps/Cloud, this homelab is used to build hands-on experience with infrastructure, networking and Kubernetes.
+This homelab is built as a hands-on environment to transition from software engineering to DevOps/Cloud.
+
+It focuses on:
+- infrastructure understanding
+- networking fundamentals
+- Kubernetes deployment and operations
+
+---
 
 ## Hardware
-- Optiplex 7050 8gb ram / 4 vcpu (Proxmox)
-- 2x Wyse 5070 4gb ram / 2 vcpu (Ubuntu Server)
-- MacBook Pro (management node)
+- Optiplex 7050 — 8GB RAM / 4 vCPU (Proxmox)
+- 2x Wyse 5070 — 4GB RAM / 2 vCPU (Ubuntu Server)
+- MacBook Pro — management node
+
+---
 
 ## Network Design
 - Static IP addressing (no DHCP dependency)
-- Fully operational LAN without router
+- Fully operational LAN without internet access
+- Freebox used as default gateway when available
 - Standardized SSH access (non-root user + sudo)
-- Freebox (internet router) used as default gateway
-- Mac can act as NAT fallback via iPhone tethering
+
+---
 
 ## Architecture
-
-## Normal Mode
 
 ```mermaid
 flowchart TD
@@ -25,8 +33,8 @@ flowchart TD
     F[Freebox<br/>Internet Router / Default Gateway]
     S[LAN Switch]
 
-    M[MacBook Pro<br/>Admin node<br/>AX88179A<br/>192.168.1.10]
-    O[opti1<br/>Proxmox host<br/>vmbr0<br/>192.168.1.11]
+    M[MacBook Pro<br/>Admin node<br/>192.168.1.10]
+    O[opti1<br/>Proxmox host<br/>192.168.1.11]
     W1[wyse1<br/>Ubuntu Server<br/>192.168.1.12]
     W2[wyse2<br/>Ubuntu Server<br/>192.168.1.13]
 
@@ -39,34 +47,17 @@ flowchart TD
     S --> W2
 ```
 
-## Fallback Mode
+---
 
-```mermaid
-flowchart TD
-    I[Internet]
-    P[iPhone 5G<br/>Backup Internet Link]
-    M[MacBook Pro<br/>Admin node / NAT gateway<br/>AX88179A<br/>192.168.1.10]
-    S[LAN Switch]
+## Current State
+- Stable LAN with static addressing
+- All nodes reachable via SSH
+- Network operates independently from internet availability
+- Infrastructure ready for cluster deployment
 
-    O[opti1<br/>Proxmox host<br/>vmbr0<br/>192.168.1.11]
-    W1[wyse1<br/>Ubuntu Server<br/>192.168.1.12]
-    W2[wyse2<br/>Ubuntu Server<br/>192.168.1.13]
-
-    I --> P
-    P -. USB tethering .-> M
-    M --> S
-
-    S --> O
-    S --> W1
-    S --> W2
-```
-
-## Key Learnings
-- DHCP failure can break local connectivity (internet router was KO)
-- Static IP ensures resilience
-- Clear separation between LAN and internet access
-- Importance of consistent access (SSH + users)
+---
 
 ## Next Steps
 - Kubernetes cluster (k3s)
-- Infrastructure automation (Terraform / Ansible)
+- Infrastructure as Code (Terraform / Ansible)
+- CI/CD pipeline integration
