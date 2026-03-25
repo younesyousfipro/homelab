@@ -1,4 +1,4 @@
-# Troubleshooting
+# 2026-03-24 Internet router (Freebox) KO
 
 ## Issue: No network connectivity
 
