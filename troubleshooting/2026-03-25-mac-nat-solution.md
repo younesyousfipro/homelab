@@ -1,4 +1,4 @@
-# 2026-03-25 — mac-nat-solution
+# 2026-03-25 Use Macbook as a NAT to access internet
 
 ## Context
 
