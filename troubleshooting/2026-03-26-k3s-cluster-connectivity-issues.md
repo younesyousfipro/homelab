@@ -99,6 +99,7 @@ Host firewall incompatible with Kubernetes networking:
 
 ## Preventive Checklist
 
+- CREATE A FIREWALL CHECKLIST IN DOCUMENTATION
 - FORWARD policy = ACCEPT  
 - UDP 8472 open (Flannel VXLAN)  
 - Inter-node traffic allowed  
@@ -110,4 +111,4 @@ Host firewall incompatible with Kubernetes networking:
 
 Cluster was correctly deployed; issue was network-level.
 
-→ In homelab/on-prem, you are responsible for network prerequisites (equivalent to cloud firewall rules).
+→ Double check for network prerequisites (equivalent to cloud firewall rules).
