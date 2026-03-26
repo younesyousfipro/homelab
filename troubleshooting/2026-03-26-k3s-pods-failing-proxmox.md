@@ -4,7 +4,7 @@
 
 k3s multi-node cluster:
 
-- Control plane: opti1 (Debian + Proxmox kernel)
+- Control plane: opti1 (Debian + Proxmox kernel) - k3s on bare metal (just to try), no VMs
 - Workers: wyse1, wyse2 (Ubuntu)
 
 Goal:
