@@ -2,12 +2,17 @@
   hosts: all
   become: true
 
+  vars:
+    common_packages:
+      - curl
+      - ca-certificates
+
   tasks:
     - name: Ensure apt cache is up to date
       apt:
         update_cache: true
 
-    - name: Install curl
+    - name: Install common packages
       apt:
-        name: curl
+        name: "{{ common_packages }}"
         state: present
