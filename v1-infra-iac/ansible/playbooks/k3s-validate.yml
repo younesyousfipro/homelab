@@ -1,0 +1,13 @@
+- name: Validate K3s Cluster
+  hosts: k3s_control_plane
+  become: true
+
+  tasks:
+    - name: Check K8s nodes
+      command: k3s kubectl get nodes
+      register: kubectl_nodes
+      changed_when: false
+
+    - name: Display nodes
+      debug:
+        msg: "{{ kubectl_nodes.stdout_lines }}"
