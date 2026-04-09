@@ -19,3 +19,9 @@
       register: k3s_token
       changed_when: false
       no_log: true
+
+    - name: Ensure control plane is tainted
+      command: >
+        kubectl taint node {{ k8s_node_name }}
+        node-role.kubernetes.io/control-plane=true:NoSchedule
+        --overwrite
